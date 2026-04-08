@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<section id="user_register">
+	<div class="container my-5">
+		<div class="col-lg-4 mx-auto">
+			<div class="card bg-primary text-center">
+				<div class="card-body text-light">
+					<h2>ユーザー登録</h2>
+					<p>ユーザー情報を入力してください。</p>
+
+					<!-- ユーザー名入力 -->
+					<form method="POST">
+						{{ form.hidden_tag() }}
+						<div class="mb-3">
+							<div>{{ form.username.label }} {{ form.username() }}</div>
+						</div>
+
+						<!-- メールアドレス入力 -->
+						<div class="mb-3">
+							<div>{{ form.email.label }} {{ form.email() }}</div>
+						</div>
+
+						<!-- パスワード入力 -->
+						<div class="mb-3">
+							<div>{{ form.password.label }} {{ form.password() }}</div>
+						</div>
+
+						<!-- パスワード入力(確認用) -->
+						<div class="mb-3">
+							<div>{{ form.pass_confirm.label }} {{ form.pass_confirm() }}</div>
+						</div>
+						<!-- 登録ボタン -->
+						{{ form.submit() }}
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
