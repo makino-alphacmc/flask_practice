@@ -1,4 +1,5 @@
-{% extends "base.html" %} {% block content %}
+{% from "_formhelpers.html" import render_field %} {% extends "base.html" %} {%
+block content %}
 <section id="user_register">
 	<div class="container my-5">
 		<div class="col-lg-4 mx-auto">
@@ -11,25 +12,31 @@
 					<form method="POST">
 						{{ form.hidden_tag() }}
 						<div class="mb-3">
-							<div>{{ form.username.label }} {{ form.username() }}</div>
+							{{ render_field(form.username, placeholder="ユーザー名",
+							class_="form-control form-control-lg") }}
 						</div>
 
 						<!-- メールアドレス入力 -->
 						<div class="mb-3">
-							<div>{{ form.email.label }} {{ form.email() }}</div>
+							{{ render_field(form.email,
+							placeholder="メールアドレス", class_="form-control form-control-lg")
+							}}
 						</div>
 
 						<!-- パスワード入力 -->
 						<div class="mb-3">
-							<div>{{ form.password.label }} {{ form.password() }}</div>
+							{{ render_field(form.password,
+							placeholder="パスワード", class_="form-control form-control-lg") }}
 						</div>
 
 						<!-- パスワード入力(確認用) -->
 						<div class="mb-3">
-							<div>{{ form.pass_confirm.label }} {{ form.pass_confirm() }}</div>
+							{{ render_field(form.pass_confirm,
+							placeholder="パスワード(確認)", class_="form-control form-control-lg") }}
 						</div>
+
 						<!-- 登録ボタン -->
-						{{ form.submit() }}
+						{{ form.submit(class="btn btn-outline w-100") }}
 					</form>
 				</div>
 			</div>

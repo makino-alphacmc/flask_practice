@@ -8,9 +8,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
 
 class RegistrationForm(FlaskForm):
-    email = StringField('メールアドレス', validators=[DataRequired(), Email()])
+    email = StringField('メールアドレス', validators=[DataRequired(), Email(message='有効なメールアドレスを入力してください')])
     username = StringField('ユーザー名', validators=[DataRequired()])
-    password = PasswordField('パスワード', validators=[DataRequired(), EqualTo('pass_confirm')])
+    password = PasswordField('パスワード', validators=[DataRequired(), EqualTo('pass_confirm', message='パスワードが一致しません')])
     pass_confirm = PasswordField('パスワード(確認)', validators=[DataRequired()])
     submit = SubmitField('登録')
 
